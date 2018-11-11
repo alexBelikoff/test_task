@@ -3,9 +3,16 @@ index:
     controller: App\Controller\DefaultController::index
 
 
-api_houses:
+api_random:
     type: rest
     prefix: /api/random
     resource: App\Controller\Api\ApiRandomController
     options:
-      expose: true
+        expose: true
+
+api_shortener:
+    type: rest
+    prefix: /api/shortener
+    resource: App\Controller\Api\ApiShortenerController
+    options:
+        expose: true

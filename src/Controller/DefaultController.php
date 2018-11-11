@@ -8,8 +8,16 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController
+class DefaultController extends Controller
 {
-
+    /**
+     * @Route("/")
+     */
+    public function indexAction()
+    {
+        return $this->render('index.html.twig');
+    }
 }

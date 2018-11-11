@@ -29,3 +29,8 @@ services:
     test_task.random_service:
         class: App\Services\RandomService
         public: true
+
+    test_task.shortener:
+        class: App\Services\Shortener
+        public: true
+        arguments: ["@doctrine.orm.entity_manager", '@request_stack']

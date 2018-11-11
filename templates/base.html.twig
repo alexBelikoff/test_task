@@ -2,11 +2,33 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Welcome to test task page!{% endblock %}</title>
+        {% block stylesheets %}
+            <style>
+                .request, .results{
+                    display: flex;
+                    flex-direction:row;
+                    align-items:center;
+                    justify-content: center;
+                }
+                table, td, th{
+                    border: 1px #3b4151 solid;
+                }
+                table {
+                    border-collapse: collapse;
+                }
+                td, th{
+                    padding: 15px;
+                }
+            </style>
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+        {% endblock %}
     </body>
 </html>

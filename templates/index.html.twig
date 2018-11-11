@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="results" style="margin: 0 auto">
+            <table id="results">
+                <tr>
+                    <th>Оригинальная ссылка</th>
+                    <th>Алиас</th>
+                </tr>
+            </table>
+
+        </div>
+        <div class="request">
+            <input type="text" id="origin_url" style="width: 500px">
+            <input type="button" value="submit" onclick="getShortenedUrl()">
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        /*document.addEventListener("DOMContentLoaded", run);
+        function run() {
+            console.log(Routing.generate('api_generate_short_url'));
+        }*/
+        function getShortenedUrl() {
+            let originUrl = document.getElementById('origin_url').value;
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", Routing.generate('api_generate_short_url'), true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            let json = JSON.stringify({
+                url: originUrl
+            });
+
+            xhr.onreadystatechange = function (aEvt) {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        let res = JSON.parse(xhr.responseText);
+                        if (res && res.url) {
+                            console.log(decodeURIComponent(res.url));
+                            let table = document.getElementById('results');
+                            let tableHtml = table.innerHTML;
+                            tableHtml += '<tr><td>' + originUrl + '</td><td>' + decodeURIComponent(res.url) + '</td></tr>';
+                            table.innerHTML = tableHtml;
+                        }
+                    }
+                }
+            }
+            xhr.send(json);
+        }
+
+    </script>
+{% endblock %}
