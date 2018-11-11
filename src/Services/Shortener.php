@@ -101,9 +101,6 @@ class Shortener
         $charsCount = count(self::$chars);
         while ($id > $charsCount - 1) {
             $offset = fmod($id, $charsCount);
-            if(!is_int($offset)){
-                throw new \Exception('Что-то пошло не так');
-            }
             $shortUrl = self::$chars[(int)$offset].$shortUrl;
             $id = floor($id / $charsCount);
         }
