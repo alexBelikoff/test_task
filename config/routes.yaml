@@ -1,0 +1,11 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+
+api_houses:
+    type: rest
+    prefix: /api/random
+    resource: App\Controller\Api\ApiRandomController
+    options:
+      expose: true
