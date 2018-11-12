@@ -20,7 +20,7 @@ class ShortenedUrl
     private $id;
 
     /**
-     * @ORM\Column(name="original_url", type="string", length=512, unique=true)
+     * @ORM\Column(name="original_url", type="string", length=255, unique=true)
      */
     private $originalUrl;
 
