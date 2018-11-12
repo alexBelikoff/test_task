@@ -22,10 +22,11 @@
 
 **Развертывание проекта:**
 
-    1. Склонировать репозиторий **git clone https://github.com/alexBelikoff/test_task.git**
-    2. Указать подключение к БД в файле **.env** (строка вида DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name)
-    3. Установить зависимости **composer install**
-    4. Применить миграции **php bin/console doctrine:migrations:migrate**
-    5. Установить assets **php bin/console assets:install --symlink**
-    6. Запустить сервер **php bin/console server:run**
-    7. Открыть в браузере **http://127.0.0.1:8000/**
+    1. Склонировать репозиторий git clone https://github.com/alexBelikoff/test_task.git
+    2. Указать подключение к БД в файле .env (строка вида DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name)
+    3. Установить зависимости composer install
+    4. Создать базу данных php bin/console doctrine:database:create
+    4. Применить схему php bin/console doctrine:schema:update --force
+    5. Установить assets php bin/console assets:install --symlink
+    6. Запустить сервер php bin/console server:run
+    7. Открыть в браузере http://127.0.0.1:8000/
