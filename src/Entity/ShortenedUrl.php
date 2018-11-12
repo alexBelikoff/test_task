@@ -7,7 +7,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ShortenedUrlRepository")
- * @ORM\Table(name="shortened_url", uniqueConstraints={@ORM\UniqueConstraint(name="shortened_url_unique",columns={"id"})})
+ * @ORM\Table(name="shortened_url", uniqueConstraints={@ORM\UniqueConstraint(name="shortened_url_unique_id",columns={"id"}),@ORM\UniqueConstraint(name="shortened_url_unique_original",columns={"original_url"})})
  * })
  */
 class ShortenedUrl
